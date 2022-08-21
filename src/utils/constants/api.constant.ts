@@ -1,6 +1,6 @@
 // 503 No healthy IP available for the backend
 export const NY_BASE_API_URL = 'https://api.nytimes.com/svc/';
-
+export const SECRET_KEY = 'jFoJMeXBb41ncmeclGTAvGBgxJtZyX8A';
 export const NY_STORIES_URL = `${NY_BASE_API_URL}topstories/v2/`;
 
 export const NY_SEARCH_URL = `${NY_BASE_API_URL}search/v2/articlesearch.json`;
