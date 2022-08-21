@@ -10,13 +10,13 @@ import { Box, Chip } from '@mui/material';
 import StoryCardModalContent from './StoryCardModalContent';
 
 export interface IStoryCard extends IStoryResult {
-  index: number;
+  index?: number;
   onClick?: (arg0: IStoryResult, arg1: number) => void;
   inModal?: boolean;
   
 }
 export default function StoryCard(props: IStoryCard) {
-  const {onClick, inModal = false,index, ...rest} = props;
+  const {onClick, inModal = false,index = 1, ...rest} = props;
   const {title, abstract, multimedia, subsection, section, url} = rest;
   const clickHandler = () => {
     if(onClick) {

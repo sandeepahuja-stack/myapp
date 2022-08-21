@@ -1,6 +1,6 @@
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import {  Link, useNavigate } from "react-router-dom";
 import { logoutUser } from "../../../redux/actions/user.actions";
 import IStore from "../../../redux/interfaces/IStore";
 import Search from "../Search";
@@ -19,13 +19,14 @@ const Navbar = () => {
         }}>
           <Box component="nav">
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} role="menu">
-              <Link to="/" role="menu-link" style={style}>Stories</Link>
+               <Link to="/" role="menu-link" style={style}>Stories</Link>
             </Typography>
           </Box>
+          
           <Box display="flex" justifyContent="end" >
             <Search />
-            {userName === '' && <Button color="inherit" variant="text" ><Link to="/login" style={style}>Login</Link></Button>}
-            {userName  && <Button color="inherit" variant="text" onClick={()=>{
+            {userName === '' && <Button color="inherit" variant="text" data-testid="loginbtn"><Link to="/login" style={style}>Login</Link></Button>}
+            {userName  && <Button color="inherit" variant="text" data-testid="logoutbtn" onClick={()=>{
               dispatch(logoutUser());
               navigate('/login')
               

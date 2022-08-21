@@ -1,8 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import Home from "./index";
-import {  Router } from 'react-router-dom';
-import { Routes, Route } from "react-router-dom";
 const mockDispatch = jest.fn();
 jest.mock('react-redux', () => ({
   useSelector: ()=>{
@@ -51,22 +48,28 @@ jest.mock('react-redux', () => ({
     }
   },
   useDispatch: () => mockDispatch,
-  // useHref: jest.fn()
+  
 }));
+
+jest.mock('react-router-dom', () => ({
+  useNavigate: (arg0: string) => jest.fn(),
+  Link: () => 'mocked child1' ,
+  useHref: jest.fn(),
+  useParams: () => {
+    return {
+      newsCategory: 'home'
+    }
+  }
+}));
+
 
 describe('Home', () => {
 
     test(" search exist", async () => {
         render(<Home />)
-        const inputEl = screen.getByTestId('nav-search');
-        expect(inputEl).toBeTruthy()
-        // userEvent.click(inputEl);
-        // userEvent.click(modal);
-        // await waitFor(() => {
-
-        // const modal =  screen.getByTestId('search-modal');
-            
-        //     expect(modal).toBeTruthy()
-        // })
+        const title = screen.getByTestId('title');
+        expect(title).toBeTruthy()
+       
     });
+
 })

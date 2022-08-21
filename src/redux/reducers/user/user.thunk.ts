@@ -35,7 +35,6 @@ export const loginUserAsync = ({
         password
     }).then(({data})=>{
         
-        CookiesHelper.createCookie('pwd',btoa(password),15);
         CookiesHelper.createCookie('token',btoa(data.access_token),15);
         dispatch(loginLoadSuccess({
             token: data.access_token,

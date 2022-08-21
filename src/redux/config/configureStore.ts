@@ -33,7 +33,8 @@ const customMiddleWare: Middleware = store => next => action => {
 
 const configureStore = () => {
     const middlewares = [customMiddleWare, thunk];
-    const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const composeEnhancer =  compose;
+    
     const enhancers = composeEnhancer(applyMiddleware(...middlewares));
     const store = createStore(rootReducer(), enhancers);
     return store;

@@ -1,9 +1,8 @@
 import {  Box, Button, Divider, Grid, Modal, Snackbar, Typography } from "@mui/material";
-import { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import AlertNotification from "../../components/common/Notification/AlertNotification";
-import StoryCard from "../../components/common/StoryCard";
 import { loadstoriesAsync } from "../../redux/reducers/stories/stories.thunk";
 import IStore from "../../redux/interfaces/IStore";
 import { IStoryResult } from "../../redux/interfaces/Istories";
@@ -12,7 +11,9 @@ import { ModalBoxStyled, ModalResultWrapper } from "../../components/common/Sear
 
 import { ReactComponent as BackIcon } from '../../assets/svg/BackIcon.svg';
 import { loadstoriesCommentAsync } from "../../redux/reducers/storyComments/storyComments.thunk";
-
+const StoryCard = React.lazy(() => import(
+    /* webpackChunkName: "StoryCard" */
+    '../../components/common/StoryCard'));
 
 const Home = () => {
     let {newsCategory = 'home'} = useParams();
@@ -52,7 +53,7 @@ const Home = () => {
         
         <Typography variant="h3"  component="h1" sx={{
             mt: 2
-        }}>Stories</Typography>
+        }} data-testid="title">Stories</Typography>
         <Box my={2}>
         {links.map(({link, text, represent})=><Button variant={ `${represent === newsCategory ? "contained" : "outlined"}`} key={text} sx={{
             marginRight: '10px'
@@ -64,7 +65,7 @@ const Home = () => {
         <Grid container spacing={4} mb="20px" >
         {stories?.map(({title, ...args}, index)=>{
             if(!title) return null;
-        return <Grid item xs={12} sm={6} md={4} key={title} title={title}><StoryCard {...args} index={index + 1 } title={title} onClick={onClick}  /></Grid>})}
+        return <Grid item xs={12} sm={6} md={4} key={title} title={title}><Suspense fallback={<div></div>}><StoryCard {...args} index={index + 1 } title={title} onClick={onClick}  /></Suspense></Grid>})}
         </Grid>
         
         {(articleData) && <Modal
@@ -85,7 +86,7 @@ const Home = () => {
             <Divider />
             </Box>
                 <ModalResultWrapper>
-                <StoryCard  {...articleData} inModal />
+                <Suspense fallback={<div></div>}> <StoryCard  {...articleData} inModal /></Suspense>
                 </ModalResultWrapper>
                 </ModalBoxStyled>
             </Modal>}

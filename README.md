@@ -16,6 +16,13 @@ $ npm install
 $ npm  start
 ```
 
+## Test Coverage
+``` bash
+$ npm test -- --coverage
+
+    <Absolute Path>/coverage/lcov-report/index.html
+```
+
 ## Home Page
     Home page consist of articles and you can filter the article as well
     We have three tabs available or page (All, World, Science )

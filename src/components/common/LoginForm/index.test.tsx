@@ -1,3 +1,4 @@
+
 import { fireEvent, render, screen } from "@testing-library/react";
 import LoginForm from "./index";
 const mockDispatch = jest.fn();
@@ -11,6 +12,11 @@ jest.mock('react-redux', () => ({
   },
   useDispatch: () => mockDispatch,
   // useHref: jest.fn()
+}));
+
+
+jest.mock('react-router-dom', () => ({
+  useNavigate: jest.fn(),
 }));
 
 describe('Login Form', () => {
