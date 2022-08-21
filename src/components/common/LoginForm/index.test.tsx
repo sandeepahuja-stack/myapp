@@ -11,7 +11,7 @@ jest.mock('react-redux', () => ({
     }
   },
   useDispatch: () => mockDispatch,
-  // useHref: jest.fn()
+  
 }));
 
 
@@ -22,7 +22,7 @@ jest.mock('react-router-dom', () => ({
 describe('Login Form', () => {
 
     test("form exist", async () => {
-        render(<LoginForm />)
+        render(<LoginForm switchPage={()=>{}}/>)
         const loginForm = screen.getByTestId('login-form');
         fireEvent.submit(loginForm)
         expect(loginForm).toBeTruthy()
@@ -30,7 +30,7 @@ describe('Login Form', () => {
     });
 
     test("password field exist", async () => {
-        render(<LoginForm />)
+        render(<LoginForm switchPage={()=>{}}/>)
         const password = screen.getByPlaceholderText('password');
         fireEvent.change(password, {target: {value: '23'}})
         expect(password).toBeTruthy()
@@ -39,7 +39,7 @@ describe('Login Form', () => {
 
 
     test(" User Name field exist", async () => {
-        render(<LoginForm />)
+        render(<LoginForm switchPage={()=>{}}/>)
         const textfield = screen.getByPlaceholderText('User Name');
         fireEvent.change(textfield, {target: {value: 'user'}})
         expect(textfield).toBeTruthy()

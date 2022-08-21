@@ -28,10 +28,11 @@ jest.mock('react-router-dom', () => ({
 
 describe('Login', () => {
 
-    test(" search exist", async () => {
+    test(" Login exist", async () => {
         render(<Login />)
-        const passowrd = screen.getByText('Register');
-        expect(passowrd).toBeTruthy()
+    
+        expect(screen.getByText('Loading Login Form')).toBeTruthy()
+        
        
     });
 

@@ -12,7 +12,7 @@ jest.mock('react-redux', () => ({
     }
   },
   useDispatch: () => mockDispatch,
-  // useHref: jest.fn()
+  
 }));
 
 describe('alert notification', () => {

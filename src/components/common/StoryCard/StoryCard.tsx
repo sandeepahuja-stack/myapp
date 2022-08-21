@@ -33,12 +33,18 @@ export default function StoryCard(props: IStoryCard) {
       })
     }} data-testid={`${title}_${index}`} >
      {multimedia && multimedia[0] && <CardMedia
-        
-        component="img"
-        height="200"
-        image={multimedia[0]?.url}
-        alt={multimedia[0]?.caption}
-      />}
+        sx={{
+          textAlign: 'center',
+          backgroundColor: 'rgba(0,0,0,.3)'
+        }}
+     
+      >
+ <img    height="250"
+ width={inModal? 'auto' : '100%'}
+        src={multimedia[0]?.url}
+        alt={multimedia[0]?.caption} 
+        loading="lazy" />
+        </CardMedia>}
  
       <CardContent onClick={onClick && clickHandler} sx={{
         ...(onClick && {

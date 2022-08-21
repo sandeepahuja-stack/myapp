@@ -3,6 +3,7 @@ const userInitState = {
     user: '',
     err: null,
     isLoading: false,
+    registered: false,
 }
 
 export default userInitState;

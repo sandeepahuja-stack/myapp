@@ -9,27 +9,31 @@ const userReducer = (state = initState, {type, payload}: {type: string, payload:
                 ...state,
                 err: null,
                 isLoading: false,
+                registered: true,
             };
         
         case actionTypes.REGISTER_USER_LOADING:
             return {
                 ...state,
                 isLoading: true,
-                err: null
+                err: null,
+                registered: false,
             };
 
         case actionTypes.REGISTER_USER_FAIL:
             return {
                 ...state,
                 isLoading: false,
-                err: payload.err
+                err: payload.err,
+                registered: false,
             };
 
         case actionTypes.LOGIN_USER_FAIL:
             return {
                 ...state,
                 isLoading: false,
-                err: payload.err
+                err: payload.err,
+                registered: false,
             };
         case actionTypes.LOGIN_USER_SUCCESS:
             return {
@@ -38,6 +42,7 @@ const userReducer = (state = initState, {type, payload}: {type: string, payload:
                 err: null,
                 token: payload.token,
                 user: payload.user,
+                registered: false,
             };
 
         case actionTypes.LOGIN_USER_LOADING:
@@ -46,7 +51,8 @@ const userReducer = (state = initState, {type, payload}: {type: string, payload:
                 isLoading: true,
                 err: null,
                 token: '',
-                user: ''
+                user: '',
+                registered: false,
             };
 
 
@@ -56,7 +62,8 @@ const userReducer = (state = initState, {type, payload}: {type: string, payload:
                 isLoading: false,
                 err: null,
                 token: '',
-                user: ''
+                user: '',
+                registered: false,
             };
         default: 
             return state;

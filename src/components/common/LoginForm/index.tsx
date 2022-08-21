@@ -2,11 +2,13 @@ import { Box, Button, TextField } from '@mui/material';
 import {  useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUserAsync } from '../../../redux/reducers/user/user.thunk';
-import { useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
-    let navigate = useNavigate();
-    // Somewhere in your code, e.g. inside a handler:
+
+const LoginForm = ({
+    switchPage
+}:{
+    switchPage: (arg0: boolean)=>void
+}) => {
     
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
@@ -17,7 +19,7 @@ const LoginForm = () => {
         e.preventDefault();
 
         dispatch(loginUserAsync({ email: user, password: pwd }));
-        navigate("/"); 
+        
       
     }
 
@@ -48,11 +50,13 @@ const LoginForm = () => {
                 
             </form>
             <p>
-                Need an Account?<br />
-                <span className="line">
+                Need an Account? {' '}
                     {/*put router link here*/}
-                    {/* <a href="#">Sign Up</a> */}
-                </span>
+                    <Button variant="text" onClick={()=>{
+                        switchPage(false)
+                    }}>
+                        Sign up?
+                    </Button>
             </p>
         </section>
         

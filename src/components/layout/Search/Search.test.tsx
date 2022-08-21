@@ -27,7 +27,7 @@ describe('Nav Search', () => {
 
     test(" search modal not present", async () => {
         render(<SearchBar />)
-        const inputEl = screen.getByTestId('nav-search');
+        
         
         
         await waitFor(() => {

@@ -17,7 +17,7 @@ const SearchCard = () => {
         {isLoading && <Typography>loading</Typography>}
         { search && search?.map(({_id, abstract, multimedia, headline})=>{
           if(!abstract) return null;
-          return <Card key={_id} sx={{
+          return <Card key={_id} data-testid={`searchcard${_id}`} sx={{
             borderRadius: 0,
             display: 'flex',
             justifyContent: "space-between",

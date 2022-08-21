@@ -9,4 +9,5 @@ export interface IUser {
     token: string;
     user: string;
     err: string;
+    registered: boolean;
 }

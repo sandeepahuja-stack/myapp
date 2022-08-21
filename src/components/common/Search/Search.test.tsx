@@ -131,16 +131,15 @@ jest.mock('react-redux',  () => {
     }
   },
   useDispatch: () => mockDispatch,
-  // useHref: jest.fn()
 })});
 
 describe('search', () => {
 
     test("search list exist", async () => {
         render(<Search />)
-        // const storycard = screen.getByTestId(`${storiesMock[0].title}_1`);
+        const searchCard = screen.getByTestId(`searchcardnyt://article/08e9c44c-5c04-5e1c-a4be-aa18f8294155`);
         
-        // expect(storycard).toBeTruthy()
+        expect(searchCard).toBeTruthy()
         
     });
 

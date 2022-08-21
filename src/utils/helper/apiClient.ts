@@ -12,7 +12,7 @@ const apiClient = ({
         token = getState?.user?.token;
         if(token) {
 
-            requestHeader['Authorization'] = `Bearer ${token}11`;
+            requestHeader['Authorization'] = `Bearer ${token}`;
         }
     }
 

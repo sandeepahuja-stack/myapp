@@ -7,7 +7,11 @@ import { registerUserAsync } from "../../../redux/reducers/user/user.thunk";
 const USER_REGEX = /^[A-z]{3,23}$/;
 const PWD_REGEX = /^[-@.\/#&+\w\s]{8,23}$/;
 
-const RegisterForm = () => {
+const RegisterForm = ({
+    switchPage
+}:{
+    switchPage: (arg0: boolean)=>void
+}) => {
   
     const dispatch = useDispatch();
     const [user, setUser] = useState('');
@@ -35,9 +39,10 @@ const RegisterForm = () => {
     }, [pwd, matchPwd])
 
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
+    const handleSubmit =  (e: React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
-        dispatch(registerUserAsync({ email: user, password: pwd }));
+       dispatch(registerUserAsync({ email: user, password: pwd }));
+       
     }
 
     return (
@@ -106,9 +111,18 @@ const RegisterForm = () => {
                     
                     <Button type="submit" variant="contained" color="secondary" disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</Button>
                 </form>
-              
+                <p>
+                Have an Account? {' '}
+                    {/*put router link here*/}
+                    <Button variant="text" onClick={()=>{
+                        switchPage(true)
+                    }}>
+                        Sign in?
+                    </Button>
+            </p>
             </section>
-    </>
+            
+        </>
     )
     
 }

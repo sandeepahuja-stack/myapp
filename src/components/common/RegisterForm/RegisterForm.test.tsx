@@ -15,14 +15,14 @@ jest.mock('react-redux',  () => {
     }
   },
   useDispatch: () => mockDispatch,
-  // useHref: jest.fn()
+  
 })});
 
 describe('RegisterForm', () => {
 
        
     test("form exist", async () => {
-        render(<RegisterForm />)
+        render(<RegisterForm switchPage={()=>{}}/>)
         const loginForm = screen.getByTestId('registerform');
         fireEvent.submit(loginForm)
         expect(loginForm).toBeTruthy()
@@ -30,7 +30,7 @@ describe('RegisterForm', () => {
     });
 
     test("password field exist", async () => {
-        render(<RegisterForm />)
+        render(<RegisterForm switchPage={()=>{}}/>)
         const password = screen.getByPlaceholderText('Password');
         fireEvent.change(password, {target: {value: 'abcdefghijk'}})
         expect(password).toBeTruthy()
@@ -38,7 +38,7 @@ describe('RegisterForm', () => {
     });
 
     test("cnfpwd password field exist", async () => {
-        render(<RegisterForm />)
+        render(<RegisterForm switchPage={()=>{}}/>)
         const User = screen.getByPlaceholderText('User');
         fireEvent.change(User, {target: {value: ' '}})
         expect(User).toBeTruthy()
@@ -54,7 +54,7 @@ describe('RegisterForm', () => {
 
 
     test("User field exist", async () => {
-        render(<RegisterForm />)
+        render(<RegisterForm switchPage={()=>{}}/>)
         const User = screen.getByPlaceholderText('User');
         fireEvent.change(User, {target: {value: 'abcdefghijk'}})
         expect(User).toBeTruthy()

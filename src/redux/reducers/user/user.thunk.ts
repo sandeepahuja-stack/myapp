@@ -8,9 +8,9 @@ import { IRegisterUserParam } from "../../interfaces/IUser";
 export const registerUserAsync = ({
     email, 
     password
-}: IRegisterUserParam)=> (dispatch: any) => {
+}: IRegisterUserParam)=> async (dispatch: any) => {
     dispatch(registerLoadStart());
-    RegisterService.createUser({
+    await RegisterService.createUser({
         email, 
         password
     }).then(()=>{
@@ -20,7 +20,7 @@ export const registerUserAsync = ({
             message
         }}} = err;
         dispatch(registerLoadError(message || err.message));
-    })
+    });
 }
 
 

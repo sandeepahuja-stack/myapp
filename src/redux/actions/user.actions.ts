@@ -5,7 +5,7 @@ export const registerLoadStart = () => ({
 });
 
 export const registerLoadSuccess = () => ({
-    type: actionTypes.REGISTER_USER_SUCCESS
+    type: actionTypes.REGISTER_USER_SUCCESS,
 });
 
 export const registerLoadError = (err: string) => ({

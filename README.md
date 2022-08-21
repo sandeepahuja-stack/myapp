@@ -66,4 +66,9 @@ with the following data
 
 
 
+## NOTE 
+```
+    If you face CORS issue please use this extension for now
+    Allow CORS: Access-Control-Allow-Origin : https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en
+```
 
