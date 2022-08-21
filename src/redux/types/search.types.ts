@@ -1,0 +1,7 @@
+const searchTypes = {
+	SEARCH_LOAD_START : "SEARCH_LOAD_START",
+	SEARCH_LOAD_SUCCESS: "SEARCH_LOAD_SUCCESS",
+	SEARCH_LOAD_ERROR: "SEARCH_LOAD_ERROR"
+};
+
+export default searchTypes;

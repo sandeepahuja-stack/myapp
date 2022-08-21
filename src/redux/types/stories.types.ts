@@ -1,0 +1,7 @@
+const storiesTypes =  {
+	STORIES_LOAD_START : "STORIES_LOAD_START",
+	STORIES_LOAD_SUCCESS: "STORIES_LOAD_SUCCESS",
+	STORIES_LOAD_ERROR: "STORIES_LOAD_ERROR",
+};
+
+export default storiesTypes;
