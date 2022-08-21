@@ -16,7 +16,7 @@ $ npm install
 $ npm  start
 ```
 
-## Test Coverage
+## Test & Coverage
 ``` bash
 $ npm test -- --coverage
 
