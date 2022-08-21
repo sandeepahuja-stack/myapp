@@ -55,7 +55,9 @@
     "@types/jest": "^28.1.6"
   },
   "jest": {
+
     "collectCoverageFrom": [
+      
       "<rootDir>/src/components/**/*.{ts,tsx}",
       "!**/node_modules/**",
       "!<rootDir>/src/__mock__/*.{ts,tsx}"
