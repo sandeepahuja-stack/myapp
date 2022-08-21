@@ -29,7 +29,14 @@ $ npm test -- --coverage
 
 ## How to login/register?
 
-You can login/register by filling a form 
+
+``` 
+ For login / register backend services clone this
+ https://github.com/techiediaries/fake-api-jwt-json-server
+```
+
+
+User can login/register by filling a form 
 
 ```
     url : http://localhost:3000/login
@@ -72,3 +79,14 @@ with the following data
     Allow CORS: Access-Control-Allow-Origin : https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en
 ```
 
+## Scope of improvements or enhancement of features
+```
+    1. One end point or proxy can be used for all the services, so that frontend don’t have to maintain & share a key and don’t have to call another API for valid authorization.
+    2. Lazy loading of images
+    3. Login flow can be improved 
+    4. In comment section, 
+    4.1 If user is logged in, we can show a text box to user to fill their comments.
+    4.2 If user is logged out, we can show user a login button.
+    5 User can got to article page by click on article and same for search article, where we need an API which will share the individual article details 
+    6 Footer section
+```
