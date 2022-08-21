@@ -77,6 +77,7 @@ with the following data
 ```
     If you face CORS issue please use this extension for now
     Allow CORS: Access-Control-Allow-Origin : https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en
+    CORS Unblock:    https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino?hl=en
 ```
 
 ## Scope of improvements or enhancement of features
