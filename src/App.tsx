@@ -1,10 +1,19 @@
 
 
-import { Container, createTheme, ThemeProvider } from '@mui/material';
+import {  Container, createTheme, ThemeProvider } from '@mui/material';
 import Navbar from './components/layout/Navbar';
-import Home from './pages/Home';
 import { Routes, Route } from "react-router-dom";
-import Login from './pages/Login';
+import React, { Suspense } from 'react';
+
+const Login = React.lazy(() => import(
+  /* webpackChunkName: "LoginPage" */
+  './pages/Login'));
+
+
+const Home = React.lazy(() => import(
+  /* webpackChunkName: "HomePage" */
+  './pages/Home'));
+
 function App() {
   const theme = createTheme();
   
@@ -13,13 +22,15 @@ function App() {
       <Navbar />
       <Container >
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/:newsCategory" element={<Home />} />
+        <Route path="/" element={<Suspense fallback={<div>Loading home</div>}><Home /></Suspense>} />
+        <Route path="/login" element={<Suspense fallback={<div>Loading login</div>}><Login /></Suspense>} />
+        <Route path="/:newsCategory" element={<Suspense fallback={<div>Loading home</div>}><Home /></Suspense>} />
 
-        {/* <Route path="about" element={<About />} /> */}
       </Routes>
     </Container>
+    {/* 
+    Footer section to be created
+    */}
     </ThemeProvider>
   );
 }

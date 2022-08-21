@@ -1,4 +1,5 @@
-import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {  Link, useNavigate } from "react-router-dom";
 import { logoutUser } from "../../../redux/actions/user.actions";
@@ -13,6 +14,19 @@ const Navbar = () => {
   const {user: userName} = user;
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const logoutHandler = ()=>{
+    dispatch(logoutUser());
+    navigate('/login')
+  }
+
     return <AppBar position="static" variant="elevation">
         <Toolbar sx={{
           justifyContent:"space-between"
@@ -26,11 +40,26 @@ const Navbar = () => {
           <Box display="flex" justifyContent="end" >
             <Search />
             {userName === '' && <Button color="inherit" variant="text" data-testid="loginbtn"><Link to="/login" style={style}>Login</Link></Button>}
-            {userName  && <Button color="inherit" variant="text" data-testid="logoutbtn" onClick={()=>{
-              dispatch(logoutUser());
-              navigate('/login')
-              
-            }} >Logout</Button>}
+            {userName&& <>
+                <Button
+                  
+                  data-testid="profilebtn"
+                  color="inherit"
+                  aria-haspopup="true"
+                  aria-expanded={open ? 'true' : undefined}
+                  onClick={handleClick}
+                >
+                  {userName}
+                </Button>
+                <Menu
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+               
+                >
+                  <MenuItem onClick={logoutHandler} data-testid="logoutbtn">Logout</MenuItem>
+                </Menu>
+            </>}
 
           </Box>
             

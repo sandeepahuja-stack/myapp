@@ -18,7 +18,6 @@ const customMiddleWare: Middleware = store => next => action => {
         }).then(()=>{
 
         }).catch((e)=>{
-            console.log(e);
             const {response} = e;
             if(response?.status === 401 && window) {
                 alert('session timeout');

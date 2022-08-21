@@ -31,13 +31,13 @@ describe('Navbar', () => {
     });
 
 
-    test(" logout button",  () => {
+    test(" profile button",  () => {
       
 
       render( <Navbar />)
       
-        const logout = screen.getByTestId('logoutbtn');
-        fireEvent.click(logout)
-        expect(logout).toBeTruthy()
+        const profilebtn = screen.getByTestId('profilebtn');
+        fireEvent.click(profilebtn)
+        expect(profilebtn).toBeTruthy()
     });
 })

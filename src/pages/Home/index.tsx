@@ -68,7 +68,8 @@ const Home = () => {
             if(!title) return null;
             return <Grid item xs={12} sm={6} md={4} key={title} title={title}><Suspense fallback={<div></div>}><StoryCard {...args} index={index + 1 } title={title} onClick={onClick}  /></Suspense></Grid>})}
             </>
-            : <>loading</>
+            : <><Grid item xs={12} sm={6} md={4} >
+                Loading....</Grid></>
 
         }
         </Grid>
